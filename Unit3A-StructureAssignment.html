@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>WDV321 Advanced Javascript</title>
+
+
+<script>
+    function switchView(){
+        let tech = document.querySelector("#tech");
+        let complaint = document.querySelector("#complaint");
+        let product = document.querySelector("#product");
+        let issue = document.querySelector("#contact").value;
+        let label = document.querySelector("#complaintLabel");
+
+        switch(issue) {
+
+            case "tech":
+                complaint.style.display="none";
+				label.style.display="none";
+                tech.style.display="block";
+                product.style.display="none";
+                break;
+            case "product":
+                complaint.style.display="none";
+				label.style.display="none";
+                tech.style.display="none";
+                product.style.display="block";
+                break;
+
+            case "complaint":
+                complaint.style.display="block";
+				label.style.display="block";
+                tech.style.display="none";
+                product.style.display="none";
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+
+<style>
+
+    #product, #complaintLabel, #complaint, #tech{
+               display: none;
+           }
+           </style>
+
+</head>
+<body onload="">
+
+	<h1>WDV321 Advanced Javascript</h1>
+	<h2>Dynamic Structure - Assignment</h2>
+<p>Use this page as the basis for your assignment. Given the drop down list provided on this page please do the following things.</p>
+<p>
+	  <label for="contact">Reason For Contact:</label>
+		<select name="contact" id="contact" onchange="switchView()">
+            <option selected disabled="disabled">Choose Topic</option>
+            <option value="tech">Technical Tissues</option>
+            <option value="product">Product Issues</option>
+		  <option value="complaint">Complaint</option>
+		</select>
+	</p>
+<p>Create the content areas on the page.</p>
+	<ol>
+	  <li>Create a div that contains a new drop down list with at least four common Complaints to a company. </li>
+	  <li>Create a div that contains four Technical Problems displayed as a  set of checkboxes. </li>
+	  <li>Create a div that contains four Product Issues displayed as a set of radio buttons.</li>
+	  <li>Use the display property to remove these content containers from the page.</li>
+    </ol>
+	<p>Based on the selection from the &quot;Reason For Contact&quot; dynamically display the requested set of followup questions on the page using the display property.</p>
+	<p>You are welcome to change the content, layout and style of this page as desired. </p>
+	<p>&nbsp;</p>
+
+    <label for="complaint" id="complaintLabel">What is the reason for your complaint?</label>
+    <select name="complaint" id="complaint">Select your reason
+        <option selected disabled="disabled">Choose</option>
+        <option value="CD">Delivery Related</option>
+        <option value="CB">Customer Service Related</option>
+        <option value="CS">Billing Related</option>
+        <option value="CA">Accessibility Related</option>
+    </select>
+
+    <fieldset id="tech">
+        <legend>Select any issues that may apply</legend>
+        <ul id="cBoxes">
+            <li><input type="checkbox" id="cb1" value="troubleshooting"/><label for="cb1">Troubleshooting</label></li>
+            <li><input type="checkbox" id="cb2" value="message"/><label for="cb2">Message our suppory</label></li>
+            <li><input type="checkbox" id="cb3" value="unresponsive"/><label for="cb3">Unresponsive</label></li>
+            <li><input type="checkbox" id="cb4" value="Manual"/><label for="cb4">Online manual</label></li>
+        </ul>
+    </fieldset>
+
+    <fieldset id="product">
+        <legend>What help do you need?</legend>
+        <ul id="rdButtons">
+            <li><input name="radGrp" type="radio" id="rd1" value="damage"/><label for="rd1">Damage</label></li>
+            <li><input name="radGrp" type="radio" id="rd2" value="safety"/><label for="rd2">Safety</label></li>
+            <li><input name="radGrp" type="radio" id="rd3" value="packaging"/><label for="rd3">Packaging</label></li>
+            <li><input name="radGrp" type="radio" id="rd4" value="warrenty"/><label for="rd4">Warrenty</label></li>
+        </ul>
+    </fieldset>
+
+</body>
+</html>

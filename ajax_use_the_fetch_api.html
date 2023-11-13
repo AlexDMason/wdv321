@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Use the Fetch API</title>
+</head>
+<body>
+    <button type="button" onclick="displayid1()">Display Student1 ID</button>
+    <button type="button" onclick="displayid2()">Display Student2 ID</button>
+    <button type="button" onclick="displayid3()">Display Student3 ID</button>
+
+    <p id="demo"></p>
+
+    <script>
+
+        let info = ["ID: ", "First Name: ", "Last Name: ", "Major: ", "Credits: ", "GPA: ", "Registration Date: "]
+
+        let jsonFile = ["900006361.json", "900668871.json", "903998004.json"]
+
+
+        function displayid1() {
+
+            var txt = "";
+
+            fetch(jsonFile[0])
+                .then(function (resp) {
+                    return resp.json();
+                })
+
+                .then(function (data) {
+                    var y;
+                    var x = 0;
+
+                    while (x < info.length) {
+                        for (y in data) {
+                            txt += info[x] + " " + data[y] + "<br>";
+                            x++;
+                        }
+                        txt += "<br>";
+                    }
+                    document.getElementById("demo").innerHTML = txt;
+                })
+        }
+
+        function displayid2() {
+
+            var txt = "";
+
+            fetch(jsonFile[1])
+                .then(function (resp) {
+                    return resp.json();
+                })
+
+                .then(function (data) {
+                    var y;
+                    var x = 0;
+
+                    while (x < info.length) {
+                        for (y in data) {
+                            txt += info[x] + " " + data[y] + "<br>";
+                            x++;
+                        }
+                        txt += "<br>";
+                    }
+                    document.getElementById("demo").innerHTML = txt;
+                })
+        }
+
+        function displayid3() {
+
+            var txt = "";
+
+            fetch(jsonFile[2])
+                .then(function (resp) {
+                    return resp.json();
+                })
+
+                .then(function (data) {
+                    var y;
+                    var x = 0;
+
+                    while (x < info.length) {
+                        for (y in data) {
+                            txt += info[x] + " " + data[y] + "<br>";
+                            x++;
+                        }
+                        txt += "<br>";
+                    }
+                    document.getElementById("demo").innerHTML = txt;
+                })
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dynamic Page Structure</title>
+
+<style>
+
+	#div1	{
+		background-color:blue;	
+	}
+	#div2	{
+		background-color:green;	
+	}
+	#div3	{
+		background-color:red;	
+	}
+
+	[name=replaceDiv2] {
+		display:none;
+	}
+
+</style>
+
+<script>
+
+
+
+	function pageSetup(){
+		//everything I need to do once the page is fully loaded into the document object
+
+        
+
+		document.querySelector("[name=hide]").onclick = hideDiv2;
+		document.querySelector("[name=show]").onclick = showDiv2;
+
+		//console.log( document.querySelector("#div1").style.backgroundColor );
+		//console.log( document.querySelector("#div2").style.backgroundColor );
+
+		document.querySelector("[name=displayNone]").onclick = noneDiv2;
+		document.querySelector("[name=displayBlock]").onclick = blockDiv2;
+
+		document.querySelector("[name=removeDiv2]").onclick = removeDiv2;
+		document.querySelector("[name=replaceDiv2").onclick = replaceDiv2;
+
+		document.querySelector("[name=addDiv]").onclick = addDivision;
+	}
+
+    
+
+	function hideDiv2(){
+		 //alert("inside hideDiv2()");
+		document.querySelector("#div2").style.visibility = "hidden";
+	}
+
+	function showDiv2(){
+		//alert("inside showDiv2()");
+		document.querySelector("#div2").style.visibility = "visible";
+	}
+
+	function noneDiv2(){
+		alert("inside noneDiv2()");
+		document.querySelector("#div2").style.display = "none";
+	}
+
+	function blockDiv2(){
+		document.querySelector("#div2").style.display = "block";
+	}
+
+	function removeDiv2(){
+		document.querySelector("#div2").remove();
+		
+		//turn on the replace div2 button
+		document.querySelector("[name=replaceDiv2").style.display = "inline";
+	}
+
+	function replaceDiv2(){
+		//create the div object
+		// style it to what it was
+		// add to document object
+
+		let newDiv = document.createElement("div"); 
+		newDiv.id = "div2";		//will create the id property of the object
+		console.log(newDiv);
+
+		let divH3 = document.createElement("h3");
+		divH3.innerHTML = "Division 2";
+		console.log(divH3);
+
+		newDiv.appendChild(divH3);
+
+		console.log(newDiv);
+
+		document.querySelector("body").insertBefore(newDiv, document.querySelector("#div3"))
+
+		//remove the replace button AFTER you have replaced the div 
+		document.querySelector("[name=replaceDiv2").style.display = "none";
+	}
+
+	/*
+		Add a button that would make new divisions on this page
+
+		where would it show up? after the last div in the group/list displayed
+		what number would it be? 4, 5, 6, etc.  +1 to current number
+		what color should it be? 
+			allow user to select from list
+			limit colors to a group that rotates
+			random color from list
+			random color from existing colors (red, green, blue)
+			use the same colors in the same order as the original (blue green red, blue green red...)
+		how many? is there a limit?
+			set a cap/variable that can be changed if needed (reasonable check)
+			allow customer to set the number, UI input
+
+	*/
+    function addDivision(){
+		alert("inside addDivision()");
+	}
+    const maxDiv = 100
+    const maxColor = 6
+    let currentDiv = 3
+    let colorSelector = 0
+    let colors = ["red", "blue", "yellow", "green", "orange", "purple"]
+
+    function addDivision() {
+            currentDiv++;
+            if (currentDiv <= maxDiv) {
+                let addDiv = document.createElement("div");
+                addDiv.id = "div" + currentDiv;
+                let divH3 = document.createElement("h3");
+                divH3.innerHTML = "Division " + currentDiv;
+                addDiv.style.backgroundColor = chooseDivColor();
+                colorSelector++;
+                addDiv.appendChild(divH3)
+                document.querySelector("body").insertBefore(addDiv, document.querySelector("#insert"));
+
+            }
+            else {
+                alert("Maximum Number of Divisions Reached")
+            }
+        }
+
+    function chooseDivColor() {
+            if (colorSelector == 6) {
+                colorSelector = 0
+            }
+            return colors[colorSelector];
+        }
+
+</script>
+
+
+</head>
+
+<body onload="pageSetup()">
+
+	<h1>WDV321 Advanced Javascript</h1>
+    <h2>Dynamic Page Structure</h2>
+    
+    <div id="div1" style="visibility:visible">
+    	<h3>Division 1</h3>
+    </div>
+    
+    <div id="div2">
+    	<h3>Division 2</h3>
+    </div>
+    
+    <div id="div3">
+    	<h3>Division 3</h3>
+    </div>
+<tag id="insert"></tag>
+	<p>
+    	<input name="hide" type="button" value="Hide Division 2"> 
+    	<input name="show" type="button" value="Show Division 2">
+    </p>
+    
+    <p>
+    	<input name="displayNone" type="button" value="Remove Division 2">
+        <input name="displayBlock" type="button" value="Add Division 2">
+    </p>
+
+	<p>
+		<button name="removeDiv2">Remove Div2</button>
+		<button name="replaceDiv2">Replace Div2</button>
+	</p>
+
+	<p>
+		<button name="addDiv">Add Division</button>
+	</p>
+
+
+</body>
+</html>

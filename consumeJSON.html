@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="createJSON.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WDV321 Advanced Javascript - JSON</title>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+
+<!--
+    Instructions:
+    	1. Incorporate the createJSON.js file into this page as an external javascript file.
+        2. Access the JSON object in local storage and convert it into a Javascript object.
+        3. Use the information in the object to complete the student card.   
+-->
+
+
+<style>
+	body {
+		text-align: center;
+	}
+
+	.studentCard	{
+		width:200px;
+		box-sizing:border-box;
+		background-color:lightblue;
+		padding-left:5px;
+		padding-top:3px;
+		border:thin solid blue;
+		box-shadow: 2px 2px 2px grey;	
+		margin-left: 10px;
+		margin-right: 10px;	
+		text-align: left;
+	}
+	
+	.studentCard h3	{
+		margin:0px;	
+	}
+
+	#studentsids {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	@media screen and (max-width: 400px) {
+    body {
+      margin: 0px;
+    }
+	#studentsids {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.studentCard {
+		margin-left: 40px;
+		margin-right: 0px;
+		width: 75%;
+		padding-left:55px;
+	}
+}
+</style>
+
+<script>
+        localStorage.getItem("student1");
+        console.log(student1);
+
+        localStorage.getItem("student2");
+        console.log(student2);
+
+        localStorage.getItem("student3");
+        console.log(student3);
+        
+        $(document).ready(function() {
+		let studentRecords = JSON.parse(localStorage.getItem("studentall"));
+		
+		let studentsDiv = $("#studentsids");
+
+		$.each(studentRecords.students, function(i, student) {
+			studentsDiv.append(createStudentCard(student));
+		});
+
+	});
+
+	function createStudentCard(inStudent) {
+		let result = $("<div class=\"studentCard\">");
+		result.append($("<h3>Student ID: " + inStudent.student_id + "</h3>"));
+		result.append($("<p>Student GPA: " + inStudent.student_gpa + "</p>"));
+		result.append($("<p>Student Courses:</p>"));
+		let courseList = $("<ul></ul>");
+		result.append(courseList);
+
+		let courses = inStudent.student_courses;
+		for (let i = 0; i < courses.length; i++) {
+			courseList.append($("<li>" + courses[i] + "</li>"));
+		}
+
+		return result;
+	}
+</script>
+
+</head>
+
+<body>
+	<h1>WDV321 Advanced Javascript</h1>
+    <h2>Unit-8 JSON Objects</h2>
+    <h3>Creating and consuming a JSON object</h3>
+
+        <div id="studentsids"></div>
+
+</div>    
+
+
+</body>
+</html>

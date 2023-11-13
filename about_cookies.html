@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Cookies Page</title>
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function updateLocalStorage() {
+            var inputvalue = document.querySelector('#input').value
+            localStorage.localitem = inputvalue
+            localStorage.setItem('localitem', inputvalue);
+            document.getElementById("result").innerHTML = localStorage.getItem("localitem");
+        }
+        localStorage.setItem('localitem', inputvalue);
+        
+      function pageLoad(){
+        document.getElementById("pageLoadTime").innerHTML = homepageDateTimeLoad
+        document.getElementById("viewCounter").innerHTML = homepageViewCounter
+      }
+
+      function save() {
+        let new_data = '  ' + document.getElementById('input').value;
+
+        if (localStorage.getItem('data') == null) {
+        localStorage.setItem('data', '[]');
+
+        }
+        let old_data = JSON.parse(localStorage.getItem('data'));
+         old_data.push(new_data);
+        localStorage.setItem('data', JSON.stringify(old_data));
+         }
+    
+    function accessLocalStorage(){
+        
+        $("#output").html(localStorage.getItem("inputValue"));
+    }
+
+    function deleteLocalStorage(){
+        $("#output").html("");
+        localStorage.removeItem("inputValue");
+    }
+
+    </script>
+</head>
+<body onload="pageLoad()">
+    <p>Home page visited has been visited this many times
+        <script>document.write(getCookie("visits"))</script>
+    </p>
+    <p>
+        Home page was last visited:
+        <script>document.write(getCookie("pageAccessed"))</script>
+    </p>
+    <p><a href="Homework.html">Homework</a></p>
+    <script>
+        document.getElementById("result").innerHTML = localStorage.getItem("localitem");
+    </script>
+        
+<span>The value stored :</span><h3 id="output"></h3>
+
+<button type="button" onclick="accessLocalStorage()">Display local storage</button><span>   </span>
+
+<button type="button" onclick="deleteLocalStorage()">Delete local storage</button><br>
+</body>
+</html>

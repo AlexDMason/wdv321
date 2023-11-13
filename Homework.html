@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+    <script>
+      var date = new Date();
+      const year= date.getFullYear()
+      const pageLoadTime = date.toUTCString(date.getTime())
+      const expireLength = 7
+
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function pageLoad() {
+            let visits = parseInt(getCookie("visits"));
+            if (isNaN(visits)) {
+                visits = 0;
+            }
+            visits += 1;
+
+            setCookie("visits", visits, 30);
+            checkFirstAccessCookie()
+            checkNumberViewsCookie()
+        }
+
+        let today = String(new Date());
+        setCookie('pageAccessed', today, 1);
+        console.log(document.cookie);
+        function deleteCookies() {
+            document.cookie = "visits=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "pageAccessed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+
+      function process(){ 
+        
+        if (typeof(Storage) !== "undefined") {
+            let theValue = $("#input").val();
+            localStorage.setItem("inputValue", theValue);
+            $("#output").html = "value is saved";
+            $("#input").val("");
+            $("#output").html("value stored");
+        } else {
+            $("#output").html = "error";
+        }
+          
+    }
+        
+    </script>
+</head>
+<body onload="pageLoad()">
+    <h1>WDV321 Homework</h1>
+    <h2>Alex Mason</h2>
+
+    <p><a href="unit-1Assignment.html">Unit 1 Assignment</a></p>
+    <p><a href="dynamicDropDownForm.html">Dynamic Content</a></p>
+    <p><a href="Unit3A-StructureAssignment.html">3-1 Dynamic Structure Form</a></p>
+    <p><a href="changeStructureExample(1).html">Dynamic Coding Exercise</a></p>
+    <p><a href="create_javascript_objects.html">Create Javascript Objects</a></p>
+    <p><a href="create_JSON_object.html">Create JSON Objects</a></p>
+    <p><a href="about_cookies.html">Cookie Handling</a></p>
+    <p><a href="about_cookies.html">Cookie/Local Storage Assignment</a></p>
+    <p><a href="ajax_consume_json_objects.html">AJAX Consume Objects</a></p>
+    <p><a href="ajax_use_the_fetch_api.html">AJAX Use the Fetch API</a></p>
+    <p><a href="createJSON.js">PHP-JSON Team Create Project</a></p>
+    <p><a href="consumeJSON.html">PHP-JSON Consume Team Project</a></p>
+    <p><a href="consumeJSONArrayOfObjects.html">PHP-JSON Consume Array Team Project</a></p>
+
+    <input type="button" value="Destroy Cookies" id="destroyCookies" onclick="deleteCookies();">
+
+    <form>
+        <label for="fname">Enter a value to store in local storage:</label><br>
+         <input type="text" id="input"><br>
+         <p id="output"></p>
+        
+        <button type="button" onclick="process()">Click to store value</button>
+    </form>
+
+    </body>
+</html>

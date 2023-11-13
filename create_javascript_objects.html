@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Javascript Object</title>
+    <script>
+
+        let jsJavaBook = {
+        ISBN: "0-596-00016-2",
+		Title: "Java and XML",
+		Price: "39.95",
+		Publisher: "O'Reilly &amp; Associates",
+		Authors:   {
+				Fname: "Brett",
+				Lname: "McLaughlin",
+				Price: "22.00"
+        },
+		Comments:""
+        };
+
+        let jsVBBook = {
+            ISBN:"1-861003-32-3",
+		Title:"Professional Visual Basic 6 XML",
+		Price: "49.99",
+		Publisher: "Wrox Press",
+		Authors: {
+				Fname:"James",
+				Lname:"Britt",
+				Fname:"Tuen",
+				Lname:"Duynstee"
+        },Comments:""
+        }
+
+        let jsTextBooks = {
+            obj1:jsJavaBook,
+            obj2:jsVBBook
+        }
+
+        console.log(jsTextBooks);
+
+    </script>
+</head>
+<body>
+    <script>
+        document.write(jsJavaBook.ISBN + " ");
+        document.write(jsJavaBook.Title + " ");
+        document.write(jsJavaBook.Price + " ");
+        document.write(jsJavaBook.Publisher + " ");
+        document.write(jsJavaBook.Authors.Fname + " ");
+        document.write(jsJavaBook.Authors.Lname + " ");
+        document.write(jsJavaBook.Authors.Price + " ");
+        document.write(jsJavaBook.Comments + " ");
+      </script>
+      <br>
+      <script>
+        document.write(jsVBBook.ISBN + " ");
+        document.write(jsVBBook.Title + " ");
+        document.write(jsVBBook.Price + " ");
+        document.write(jsVBBook.Publisher + " ");
+        document.write(jsVBBook.Authors.Fname + " ");
+        document.write(jsVBBook.Authors.Lname + " ");
+        document.write(jsVBBook.Comments + " ");
+      </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Consume JSON Objects</title>
+    <script>
+        function getid1()
+        {
+            var xmlhttp = new XMLHttpRequest();
+            let result="";
+            xmlhttp.onreadystatechange=function(){
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                result = JSON.parse(xmlhttp.responseText);
+                document.querySelector("#studentID1").innerHTML= result.student_id;
+                document.querySelector("#studentFirstName1").innerHTML= result.student_first_name;
+                document.querySelector("#studentLastName1").innerHTML= result.student_last_name;
+                document.querySelector("#studentMajor1").innerHTML= result.student_major;
+                document.querySelector("#studentCredits1").innerHTML= result.student_credits;
+                document.querySelector("#studentGPA1").innerHTML= result.student_gpa;
+                document.querySelector("#studentRegistrationDate1").innerHTML= result.student_registration_date;
+                }
+            }
+            xmlhttp.open("GET","900006361.json",true);
+            xmlhttp.send();
+        }
+        
+        function getid2()
+        {
+            var xmlhttp = new XMLHttpRequest();
+            let result="";
+            xmlhttp.onreadystatechange=function(){
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                result = JSON.parse(xmlhttp.responseText);
+                document.querySelector("#studentID2").innerHTML= result.student_id;
+                document.querySelector("#studentFirstName2").innerHTML= result.student_first_name;
+                document.querySelector("#studentLastName2").innerHTML= result.student_last_name;
+                document.querySelector("#studentMajor2").innerHTML= result.student_major;
+                document.querySelector("#studentCredits2").innerHTML= result.student_credits;
+                document.querySelector("#studentGPA2").innerHTML= result.student_gpa;
+                document.querySelector("#studentRegistrationDate2").innerHTML= result.student_registration_date;
+                }
+            }
+            xmlhttp.open("GET","900668871.json",true);
+            xmlhttp.send();
+        }
+        
+        function getid3()
+        {
+            var xmlhttp = new XMLHttpRequest();
+            let result="";
+            xmlhttp.onreadystatechange=function(){
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                result = JSON.parse(xmlhttp.responseText);
+                document.querySelector("#studentID3").innerHTML= result.student_id;
+                document.querySelector("#studentFirstName3").innerHTML= result.student_first_name;
+                document.querySelector("#studentLastName3").innerHTML= result.student_last_name;
+                document.querySelector("#studentMajor3").innerHTML= result.student_major;
+                document.querySelector("#studentCredits3").innerHTML= result.student_credits;
+                document.querySelector("#studentGPA3").innerHTML= result.student_gpa;
+                document.querySelector("#studentRegistrationDate3").innerHTML= result.student_registration_date;
+                }
+            }
+            xmlhttp.open("GET","903998004.json",true);
+            xmlhttp.send();
+        }
+      </script>
+</head>
+<body>
+    <div class = "student1">
+        <p>
+          <button class = "getJSONObjects" onClick = "getid1();">Display Student 1 Information</button>
+        </p>
+        <p>
+          ID: <span id="studentID1"></span>
+        </p>
+        <p>
+          First Name: <span id="studentFirstName1"></span>
+        </p>
+        <p>
+          Last Name: <span id="studentLastName1"></span>
+        </p>
+        <p>
+          Major: <span id="studentMajor1"></span>
+        </p>
+        <p>
+          Credits: <span id="studentCredits1"></span>
+        </p>
+        <p>
+          GPA: <span id="studentGPA1"></span>
+        </p>
+        <p>
+          Registration Date: <span id="studentRegistrationDate1"></span>
+        </p>
+      </div>
+      <div class = "student2">
+        <p>
+          <button class = "getJSONObjects" onClick = "getid2();">Display Student 2 Information</button>
+        </p>
+        <p>
+          ID: <span id="studentID2"></span>
+        </p>
+        <p>
+          First Name: <span id="studentFirstName2"></span>
+        </p>
+        <p>
+          Last Name: <span id="studentLastName2"></span>
+        </p>
+        <p>
+          Major: <span id="studentMajor2"></span>
+        </p>
+        <p>
+          Credits: <span id="studentCredits2"></span>
+        </p>
+        <p>
+          GPA: <span id="studentGPA2"></span>
+        </p>
+        <p>
+          Registration Date: <span id="studentRegistrationDate2"></span>
+        </p>
+      </div>
+      <div class = "student3">
+        <p>
+          <button class = "getJSONObjects" onClick = "getid3();">Display Student 3 Information</button>
+        </p>
+        <p>
+          ID: <span id="studentID3"></span>
+        </p>
+        <p>
+          First Name: <span id="studentFirstName3"></span>
+        </p>
+        <p>
+          Last Name: <span id="studentLastName3"></span>
+        </p>
+        <p>
+          Major: <span id="studentMajor3"></span>
+        </p>
+        <p>
+          Credits: <span id="studentCredits3"></span>
+        </p>
+        <p>
+          GPA: <span id="studentGPA3"></span>
+        </p>
+        <p>
+          Registration Date: <span id="studentRegistrationDate3"></span>
+        </p>
+      </div>
+</body>
+</html>
