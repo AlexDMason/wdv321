@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WDV221 Intro Javascript</title>
+<script>
+
+function compareNumbers(){
+	
+	var inValue1 = document.getElementById("value1").value;      
+	
+	var inValue2 = document.getElementById("value2").value;
+	
+	if (inValue1 > inValue2)
+	{
+		document.getElementById("results").innerHTML = inValue1;	
+	}
+	else
+	{								
+		document.getElementById("results").innerHTML = inValue2;			
+	}		
+
+  if (inValue1 == inValue2)
+  {
+    document.getElementById("results").innerHTML = "Equal";
+  }
+}
+</script>
+</head>
+
+<body>
+
+<form id="form1" name="form1" method="post" action="">
+  <p>Value 1: 
+    <input type="text" name="value1" id="value1" />
+  </p>
+  <p>Value 2: 
+    <input type="text" name="value2" id="value2" />
+  </p>
+  <p>Result: <span id="results"></span>
+    </p>
+    <input type="button" name="button3" id="button4" value="Compare Numbers" onClick="compareNumbers()"/>
+  <p>
+    <input type="reset" name="Reset" id="button" value="Reset" />
+  </p>
+</form>
+
+</body>
+</html>
+
